@@ -26,6 +26,9 @@
             </form>
 
         </div>
+        <div class="container error " ng-if="errorMessage">
+            {{errorMessage}}
+        </div>
 
     </div>
 
@@ -74,13 +77,22 @@
                     <input type="radio" ng-model="operation.type" value="virement"/>
                     </div>
                     <div class="form-group">
+                        <span>
                     <label>Montant:</label>
                     <input type="text" ng-model="operation.montant">
+                         </span>
+                        <span ng-if="operation.type=='virement'">
+                        <label>Vers compte:</label>
+                        <input type="text" ng-model="operation.codeCompte2">
+                        </span>
                     </div>
                     <button ng-click="saveOperation()" class="btn btn-primary">Save</button>
                 </form>
-            </div>
 
+            </div>
+            <div class="container error " ng-if="errorMessage">
+                {{errorMessage}}
+            </div>
         </div>
 
     </div>

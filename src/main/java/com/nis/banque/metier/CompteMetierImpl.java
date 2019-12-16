@@ -19,6 +19,8 @@ public class CompteMetierImpl implements CompteMetier {
 
     @Override
     public Compte getCompte(String codeCompte) {
-        return compteRepository.findById(codeCompte).get();
+        Compte compte= compteRepository.findById(codeCompte).get();
+        if(compte==null) throw new RuntimeException("Compte Introuvable");
+        return compte;
     }
 }
